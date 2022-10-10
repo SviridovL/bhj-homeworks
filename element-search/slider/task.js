@@ -13,41 +13,44 @@ dot.forEach((item) => {
 let i = 0;
 
 function plus() {
-  i = i + 1;
-  if (Math.abs(i) >= slide.length) {
-    i = i - slide.length;
-  }
+  i = (i + 1) % slide.length;
+  // i = i + 1;
+  // if (Math.abs(i) >= slide.length) {
+  //   i = i - slide.length;
+  // }
   common();
-  if (i >= slide.length) {
-    i = i - slide.length;
-  }
+  // if (i >= slide.length) {
+  //   i = i - slide.length;
+  // }
 }
 
 function minus() {
-  i = i - 1;
-  if (Math.abs(i) >= slide.length) {
-    i = i + slide.length;
-  }
+  i = (i - 1) % slide.length;
+  //i = i - 1;
+  // if (Math.abs(i) >= slide.length) {
+  //   i = i + slide.length;
+  // }
   common();
-  if (Math.abs(i) >= slide.length) {
-    i = i + slide.length;
-  }
+  // if (Math.abs(i) >= slide.length) {
+  //   i = i + slide.length;
+  // }
 }
 
 function dots(event) {
-  if (Math.abs(i) === slide.length && i < 0) {
-    i = i + slide.length;
-  } else {
-    i = i - slide.length;
-  }
+  i = (i + 1) % slide.length;
+  // if (Math.abs(i) === slide.length && i < 0) {
+  //   i = i + slide.length;
+  // } else {
+  //   i = i - slide.length;
+  // }
   i = dotArr.indexOf(event.currentTarget);
   common();
 
-  if (Math.abs(i) === slide.length && i < 0) {
-    i = i + slide.length;
-  } else {
-    i = i - slide.length;
-  }
+  // if (Math.abs(i) === slide.length && i < 0) {
+  //   i = i + slide.length;
+  // } else {
+  //   i = i - slide.length;
+  // }
 }
 
 function common() {

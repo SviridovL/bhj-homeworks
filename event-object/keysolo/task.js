@@ -18,7 +18,6 @@ class Game {
 
   registerEvents() {
     document.addEventListener("keyup", (event) => {
-      console.log(this.currentSymbol);
       if (
         event.key.toUpperCase() === this.currentSymbol.textContent.toUpperCase()
       ) {
@@ -37,7 +36,7 @@ class Game {
       При неправильном вводе символа - this.fail();
      */
 
-  success() {
+  success(timerId) {
     this.currentSymbol.classList.add("symbol_correct");
     this.currentSymbol = this.currentSymbol.nextElementSibling;
     if (this.currentSymbol !== null) {
@@ -51,7 +50,7 @@ class Game {
     this.setNewWord();
   }
 
-  fail() {
+  fail(timerId) {
     if (++this.lossElement.textContent === 5) {
       alert("Вы проиграли!");
       this.reset();
@@ -84,7 +83,7 @@ class Game {
     return words[index];
   }
 
-  renderWord(word) {
+  renderWord(word, timerId) {
     const html = [...word]
       .map(
         (s, i) =>
@@ -94,7 +93,24 @@ class Game {
     this.wordElement.innerHTML = html;
 
     this.currentSymbol = this.wordElement.querySelector(".symbol_current");
+    clearInterval(timerId);
+    this.timeset(word);
   }
+
+  timeset(word) {
+    const statusTime = document.querySelector(".status__time");
+
+    statusTime.textContent = word.length;
+    let timerId = setInterval(() => {
+      if (statusTime.textContent == 0) {
+        clearInterval(timerId);
+        this.fail();
+        return timerId;
+      }
+      statusTime.textContent = statusTime.textContent - 1;
+    }, 1000);
+  }
+  // countdown(time);
 }
 
 new Game(document.getElementById("game"));
