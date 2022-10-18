@@ -3,6 +3,11 @@ body {
 }
 .item {
   display: flex;
+  justify-content: space-between;
+  align-content: center;
+  /* flex-direction: column; */
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .item__code {
