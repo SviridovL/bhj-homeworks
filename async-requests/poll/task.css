@@ -9,3 +9,7 @@ body {
 .poll__title {
   margin-bottom: 20px;
 }
+.element__result_vote {
+  font-size: large;
+  font-weight: bold;
+}
