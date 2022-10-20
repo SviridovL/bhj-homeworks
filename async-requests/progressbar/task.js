@@ -22,7 +22,7 @@ btn.addEventListener("click", (event) => {
   formData.append("file", file);
   const xhr = new XMLHttpRequest();
   xhr.upload.addEventListener("progress", progressHandler, false);
-  xhr.upload.addEventListener("load", loadHandler, false);
+  xhr.upload.addEventListener("loadend", loadHandler, false);
 
   xhr.open("POST", "https://netology-slow-rest.herokuapp.com/upload.php");
   xhr.setRequestHeader("Content-Type", "multipart/form-data");
