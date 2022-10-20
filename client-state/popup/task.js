@@ -8,4 +8,6 @@ if (!document.cookie) {
     document.cookie = "counter=1;max-age=3600";
     console.log("close" + document.cookie);
   };
+} else {
+  console.log("жопа");
 }
